@@ -341,3 +341,49 @@ void main()
 
 
 }
+/******************************************栈的实际应用 括号的合法性检测************************************************/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 100
+
+typedef struct Stack
+{
+    char * base;
+    char * top;
+    int stacksize;
+
+}Stack,*pStack;
+
+//定义一个struct Satck变量
+Stack s={0};
+
+//获得s的指针
+pStack pS = &s;
+
+void StackInit(pStack ps)
+{
+    int *addr;
+    addr = (int *)malloc(MAX * sizeof(int));
+    if(!addr)
+    {
+        printf("内存申请失败!");
+        exit(0);
+    }
+
+    ps->base = addr;
+    ps->top = ps->base;
+
+
+}
+
+
+void main()
+{
+
+    char string[MAX]={0};
+    //栈的初始化
+    StackInit(pS);
+
+}
