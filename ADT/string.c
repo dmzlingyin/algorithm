@@ -110,3 +110,150 @@ int strAssign(Str &str,char *ch)
         }
     }
 }
+
+int strCompare(Str s1,Str s2)
+{
+    for(int i = 0;i < s1.length && i < s2.length;i++)
+    {
+        if(s1.ch[i] != s2.ch[i])
+            return s1.ch[i] - s2.ch[i];
+    return s1.length - s2.length;
+    }
+
+}
+
+//求子串操作
+int getSubString(Str &subStr,str str,int pos,int len)
+{
+    //判断pos和len是否合法
+    if(pos < 0 || pos >= str.length || len < 0 || len > str.length - pos)
+        return 0;
+
+    //清空字串指针
+    if(subStr.ch)
+    {
+        subStr.ch = NULL;
+        subStr.length = 0;
+    }
+
+    if(len == 0)
+    {
+        subStr.ch = NULL;
+        subStr.length = 0;
+        return 1;
+    }
+    else
+    {
+        subStr.ch = (char *)malloc(sizeof(char) * (len + 1));
+        if(subStr.ch == NULL)
+            return 0;
+        else
+        {
+            int j = pos;
+            for(int i = 0;i < len;i++)
+            {
+                subStr.ch[i] = str.ch[j];
+                j++;
+            }
+            subStr.ch[j] = "\0";//subStr.ch[len + 1] = "\0";
+            subStr.length = len;
+            return 1;
+
+        }
+    }
+}
+
+//串连接操作
+int concat(Str &str,Str str1,Str str2)
+{
+    int i,j = 0;
+    //清空串
+    if(str.ch)
+    {
+        free(str.ch);
+        str.ch = NULL;//避免野指针
+    }
+    str.ch = (char *)malloc(sizeof(char) * (str1.length + str2.length + 1));
+    if(str.ch == NULL)
+        return 0;
+    for(i;i < str1.length;i++)
+        str.ch[i] = str1.ch[i];
+    for(j;j < str2.length;j++)
+        str.ch[i+j] = str2.ch[j];
+    str.ch[i + j] = "\0";
+    str.length = str1.length + str2.length;
+    return 1;
+}
+
+
+/*********************************BF算法***************************************/
+
+int BruteForce(Str str,Str subStr)
+{
+    int i,j = 1;
+    int k = i;
+    while(i <= str.lentgh && j <= subStr.length)
+    {
+        if(str.ch[i] == subStr.ch[j])
+        {
+            i++;
+            j++;
+        }
+        else
+        {
+            j = 1;
+            i = ++k;
+        }
+    }
+
+    //匹配成功
+    if(j > subStr.length)
+        return k;
+    else
+        return 0;//匹配失败
+}
+
+/*********************************KMP算法 START***************************************/
+
+int KMP(char *t,char *p)
+{
+    int i = 0,j = 0;
+
+    while(i < strlen(t) && j < strlen(p))
+    {
+        if(j == -1 || t[i] == p[j])
+        {
+            i++;
+            j++;
+        }
+        else
+        {
+            j = next[j];
+        }
+    }
+
+    if(j >= strlen(p))
+        return i - j;
+    else
+        return -1;
+}
+
+/*********************************next数组算法***************************************/
+
+void getNext(char *p,int *next)
+{
+    next[0] = -1;
+    int i = 0,j = -1;
+    while(i < strlen(p)-1)
+    {
+        if(j == -1 || p[i] == p[j])
+        {
+            i++;
+            j++;
+            next[i] = j;
+        }
+        else
+            j = next[j];
+    }
+}
+/*********************************KMP算法 END***************************************/
