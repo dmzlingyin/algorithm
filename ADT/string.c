@@ -257,3 +257,46 @@ void getNext(char *p,int *next)
     }
 }
 /*********************************KMP算法 END***************************************/
+//kmp 复习
+
+int kmp(char *t,char *p)
+{
+    int i = 0,j = 0;
+    while(i < strlen(t) && j < strlen(p))
+    {
+        if(j == -1 || t[i] == p[j])
+        {
+            i++;
+            j++;
+        }
+        else
+        {
+            j = next[j];
+        }
+    }
+    if(j >= strlen(p))
+        return i - j;
+    else
+        return -1;
+}
+
+//j = 1 的作用其实就相当于将目标串的指针向右移动一个，模式串的指针指向第一个字符。
+//next数组复习
+void getNext(char *p,char *next)
+{
+    next[0] = -1;
+    int i = 0,j = -1;
+    while(i < strlen(p) - 1)
+    {
+        if(j == -1 || p[i] == p[j])
+        {
+            i++;
+            j++;
+            next[i] = j;
+        }
+        else
+        {
+            j = next[j];
+        }
+    }
+}
