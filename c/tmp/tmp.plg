@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: tmp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP87BD.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/tmp.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\algorithem\c\tmp\tmp.c"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP87BD.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP87CE.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/tmp.pdb" /debug /machine:I386 /out:"Debug/tmp.exe" /pdbtype:sept 
+.\Debug\tmp.obj
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP87CE.tmp"
+<h3>Output Window</h3>
+Compiling...
+tmp.c
+E:\algorithem\c\tmp\tmp.c(62) : error C2143: syntax error : missing ';' before ')'
+E:\algorithem\c\tmp\tmp.c(62) : warning C4552: '!=' : operator has no effect; expected operator with side-effect
+E:\algorithem\c\tmp\tmp.c(64) : error C2143: syntax error : missing ';' before ')'
+E:\algorithem\c\tmp\tmp.c(64) : warning C4552: '!=' : operator has no effect; expected operator with side-effect
+Ö´ÐÐ cl.exe Ê±³ö´í.
+
+
+
+<h3>Results</h3>
+tmp.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
