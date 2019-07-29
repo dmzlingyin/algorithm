@@ -139,4 +139,107 @@ void InOrderTravelTree(BitNode *root)
 }
 
 
+//递归中序遍历
+void inOrder(BiTNode *root)
+{
+    if(root)
+    {
+        inOrder(root->lchild);
+        printf("%d",root->data);
+        inOrder(root->rchild);
+    }
+}
 
+
+//树的非递归后序遍历
+
+void LastTravelTree(BiTNode *root)
+{
+    StackNode s;
+    BiTNode *cur,*pre;//一个当前节点指针，一个指向上一个访问的节点
+
+    if(root == NULL)
+    {
+        printf("树为空");
+        exit(0);
+    }
+
+    pre = NULL;
+    cur = NULL;
+    s = InitStack(s);
+
+    push(s,root);//根节点入栈
+
+    while(!StackEmpty(s))
+    {
+        cur = NULL;
+        GetTop(s,cur);
+
+        if((cur->lchild == NULL && cur->rchild == NULL) || (pre != NULL && (pre == (cur->lchild || cur->rchild))))
+        {
+            printf("%d",cur->data);
+            pre = cur;
+            pop(s,cur);
+        }
+
+        else
+        {
+            if(cur->rchild != NULL)
+                push(s,cur->rchild);
+            if(cur->lchild != NULL)
+                push(s,cur->lchild);
+
+        }
+
+
+    }
+
+
+    free(s);
+
+}
+
+//后序遍历递归代码
+
+void postOrder(BiTNode *root)
+{
+    if(root)
+    {
+        postOrder(root->lchild);
+        postOrder(root->rhild);
+        printf("%d",root->data);
+    }
+}
+
+
+//层次遍历，自上而下，从左至右
+/*
+遍历的算法思想
+
+二叉树的祖先先入栈
+
+之后，循环执行如下操作，直到队列为空：
+1. 节点出队列，执行相应操作
+2. 该节点如果存在左孩子，左孩子入栈
+3. 该节点如果存在右孩子，右孩子入栈
+
+*/
+
+
+void LayerOrder(BiTNode *root)
+{
+    LQueue Q;
+    Init_Queue(Q);
+
+    BiTNode *p;
+    enQueue(Q,root);
+    while(!QueueEmpty(Q))
+    {
+        p = deQueue(Q);
+        printf("%d",p->data);
+        if(p->lchild != NULL)
+            enQueue(Q,p->lchild);
+        if(p->rchild != NULL)
+            enQueue(Q,p->rchild);
+    }
+}
