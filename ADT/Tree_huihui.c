@@ -243,3 +243,98 @@ void LayerOrder(BiTNode *root)
             enQueue(Q,p->rchild);
     }
 }
+
+
+//对二叉树践行前序线索化
+
+void PreOrderThreat(BiThrTree BT)
+{
+
+
+    //前驱
+    BiThrTree pre = NULL;
+    if(BT != NULL)
+    {
+        if(BT->lchild == NULL)
+        {
+            BT->ltag = 1;
+            BT->lchild = pre;
+
+        }
+
+        if(pre != NULL && pre->rtag == 1)
+            pre->rchild = BT;
+
+        if(BT->rchild == NULL)
+            BT->rtag = 1;
+        pre = BT;
+
+
+        if(BT->ltag  == 0)
+        {
+            PreOrderThreat(BT->lchild);
+        }
+        PreOrderThreat(BT->rchild);
+    }
+}
+
+//二叉树的中序线索化
+
+void InOrderThreat(BiThrTree T)
+{
+    BiThrTree pre = NULL;
+    if(T)
+    {
+        InOrderThreat(T->lchild);
+        if(T->lchild == NULL)
+        {
+            T->rtag = 1;
+            T->lchild = pre;
+        }
+
+        if(pre ！= NULL && pre->rtag == 1)
+            pre->lchild = T;
+
+        if(T->rchild == NULL)
+            T->rtag = 1;
+        pre = T;
+
+        InOrderThreat(T->rchild);
+    }
+}
+
+//前序 线索二叉树，求p节点的后继节点
+BiThrTree PreorderNext(BiThrTree p)
+{
+    if(p->ltag == 0)
+        return p->lchild;
+    else
+        return p->rchild;
+}
+
+//后序线索二叉树 求p的前驱节点
+
+BiThrTree  PostorderPre(BiThrTree p)
+{
+    if(p->rtag == 0)
+        return p->rchild;
+    else
+        return p->lchild;
+}
+
+//中序线索二叉树 p节点的前驱
+
+BiThrTree InPre(BiThrTree p)
+{
+    if(p->ltag == 1)
+        q = p->lchild;
+    else
+    {
+        q = p->lchild;
+        while(q->rtag == 0)
+            q = q->rchild;
+
+    }
+
+    return q;
+}
