@@ -66,3 +66,40 @@ void BFS(Graph G,int v)
 
 }
 /****************************************************************************************/
+
+/****************************************************************************************/
+//Topological sorting 2019-08-18
+
+bool topologicalSort(Graph G)
+{
+    int count = 0;//计数访问的 顶点
+    ArcNode *e;//边表指针
+
+    InitStack(s);//栈的初始化
+
+    for(i=0;i<G.vexnum;i++)
+        if(G->adjlist[i].in == 0)
+            push(s,i);//如果入度 为0，入栈
+    while(!StackEmpty(s))
+    {
+        pop(s,v);
+        printf("%d\n",G->adjlist[v].data);
+        count++;
+
+        for(e = G->adjlist[v].firstedge;e;e=e->next)
+        {
+            k = e->adjvex;
+            if((--G->adjlist[k].in) == 0)
+                push(s,k);
+        }
+    }//end while
+
+    if(count<G->vexnum)
+        return false;s
+    else
+        return true;
+}
+
+
+/****************************************************************************************/
+
