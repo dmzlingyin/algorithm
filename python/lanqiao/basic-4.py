@@ -1,0 +1,6 @@
+n = int(input())
+array = list(map(int, input().split()))
+array.sort()
+print(array[n-1])
+print(array[0])
+print(sum(array))
