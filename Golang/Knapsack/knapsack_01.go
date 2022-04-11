@@ -21,7 +21,17 @@ func knapsack01(weight, value []int, bagweight int) {
 			}
 		}
 	}
-	fmt.Printf("the max value is: %d", dp[len(weight)-1][bagweight])
+	fmt.Printf("the max value is: %d\n", dp[len(weight)-1][bagweight])
+}
+
+func knapsack(weight, value []int, bagweight int) {
+	dp := make([]int, bagweight+1)
+	for i := 0; i < len(weight); i++ {
+		for j := bagweight; j >= weight[i]; j-- {
+			dp[j] = max(dp[j], dp[j-weight[i]]+value[i])
+		}
+	}
+	fmt.Printf("the max value is: %d\n", dp[bagweight])
 }
 
 func max(a, b int) int {
