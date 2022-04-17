@@ -1,8 +1,8 @@
-package main
+package t360
 
 import "fmt"
 
-func main() {
+func code1() {
 	var n, m int
 	_, _ = fmt.Scan(&n, &m)
 	res := make([][]int, n)

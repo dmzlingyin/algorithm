@@ -5,6 +5,6 @@ import (
 )
 
 func TestBubble(t *testing.T) {
-	nums := []int{2, 3, 7, 1, 2, 73, 0, 5}
+	nums := []int{7, 1, 3, 5, 2}
 	bubbleSort(nums)
 }

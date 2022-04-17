@@ -1,11 +1,11 @@
-package main
+package t360
 
 import (
 	"fmt"
 	"sort"
 )
 
-func main() {
+func code2() {
 	var N, M int
 	_, _ = fmt.Scanf("%d %d", &N, &M)
 	nums := make([]int, N)

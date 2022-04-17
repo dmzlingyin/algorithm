@@ -1,3 +1,7 @@
+package lc289
+
+import "strconv"
+
 func digitSum(s string, k int) string {
 	a := s
 	for len(a) > k {
