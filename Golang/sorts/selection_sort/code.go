@@ -1,4 +1,4 @@
-package selction_sort
+package selection_sort
 
 import "fmt"
 
