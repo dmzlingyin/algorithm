@@ -6,10 +6,10 @@ Date: 2022-04-06
 
 package quick_sort
 
-func QuickSort(data []int) {
+func QuickSort(data []int) []int {
 	left, right := 0, len(data)-1
 	if left >= right {
-		return
+		return []int{}
 	}
 
 	pivot := data[left]
@@ -33,10 +33,5 @@ func QuickSort(data []int) {
 	data[left] = pivot
 	QuickSort(data[:left])
 	QuickSort(data[left+1:])
-}
-
-func quickSort() []int {
-	data := []int{3, 4, 5, 3, 6, 8, 9, 3, 5}
-	QuickSort(data)
 	return data
 }

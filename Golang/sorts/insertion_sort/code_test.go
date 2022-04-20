@@ -1,12 +1,23 @@
 package insertion_sort
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestSort(t *testing.T) {
-	nums0 := []int{4, 3, 5, 6, 3, 1, 7, 2, 3, 4, 9}
-	nums1 := []int{4, 1, 7, 2, 3, 4, 9}
-	nums2 := []int{9, -1, -999}
-	sort(nums0)
-	sort(nums1)
-	sort(nums2)
+	assert := assert.New(t)
+	tests := []struct {
+		input    []int // 输入值
+		expected []int // 期望值
+	}{
+		{[]int{7, 1, 3, 5, 2}, []int{1, 2, 3, 5, 7}},
+		{[]int{-1, 0, 0, 3, -100}, []int{-100, -1, 0, 0, 3}},
+	}
+
+	for index, test := range tests {
+		assert.Equal(test.expected, sort(test.input), "Current test index is "+strconv.Itoa(index))
+	}
 }

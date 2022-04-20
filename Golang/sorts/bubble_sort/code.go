@@ -1,8 +1,6 @@
 package bubble_sort
 
-import "fmt"
-
-func bubbleSort(nums []int) {
+func bubbleSort(nums []int) []int {
 	for i := 0; i < len(nums)-1; i++ {
 		for j := i + 1; j < len(nums); j++ {
 			if nums[i] > nums[j] {
@@ -10,5 +8,5 @@ func bubbleSort(nums []int) {
 			}
 		}
 	}
-	fmt.Println(nums)
+	return nums
 }

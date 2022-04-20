@@ -1,8 +1,6 @@
 package selection_sort
 
-import "fmt"
-
-func sort(nums []int) {
+func sort(nums []int) []int {
 	for i := 0; i < len(nums); i++ {
 		min := nums[i]
 		index := i
@@ -16,5 +14,5 @@ func sort(nums []int) {
 			nums[i], nums[index] = nums[index], nums[i]
 		}
 	}
-	fmt.Println(nums)
+	return nums
 }

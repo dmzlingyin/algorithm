@@ -1,8 +1,6 @@
 package insertion_sort
 
-import "fmt"
-
-func sort(nums []int) {
+func sort(nums []int) []int {
 	for i := 0; i < len(nums); i++ {
 		cur := nums[i]
 		pre := i - 1
@@ -12,5 +10,5 @@ func sort(nums []int) {
 		}
 		nums[pre+1] = cur
 	}
-	fmt.Println(nums)
+	return nums
 }
