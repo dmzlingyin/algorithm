@@ -1,4 +1,4 @@
-package bubble_sort
+package insertion_sort
 
 import (
 	"strconv"
@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBubble(t *testing.T) {
+func TestSort(t *testing.T) {
 	assert := assert.New(t)
 	tests := []struct {
 		input    []int // 输入值
@@ -18,6 +18,6 @@ func TestBubble(t *testing.T) {
 	}
 
 	for index, test := range tests {
-		assert.Equal(test.expected, bubbleSort(test.input), "Current test index is "+strconv.Itoa(index))
+		assert.Equal(test.expected, sort(test.input), "Current test index is "+strconv.Itoa(index))
 	}
 }
