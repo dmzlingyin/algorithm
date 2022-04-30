@@ -1,4 +1,4 @@
-package selection_sort
+package shellsort
 
 import (
 	"testing"
@@ -11,7 +11,7 @@ type Test struct {
 	Exp  []int
 }
 
-func TestSelectionSort(t *testing.T) {
+func TestShellSort(t *testing.T) {
 	tests := []Test{
 		{[]int{-1, 3, 5, 0, 3, -4, 5}, []int{-4, -1, 0, 3, 3, 5, 5}},
 		{[]int{-9, 8, 2, 8, 3, -4, 2}, []int{-9, -4, 2, 2, 3, 8, 8}},
@@ -19,6 +19,6 @@ func TestSelectionSort(t *testing.T) {
 	}
 
 	for _, v := range tests {
-		assert.Equal(t, v.Exp, sort(v.Nums), "test failed.")
+		assert.Equal(t, v.Exp, shellsort(v.Nums), "test failed.")
 	}
 }
